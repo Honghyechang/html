@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang='ko'>
+<head>
+ <title></title>
+ <style>
+    td{
+        border: 3px solid black;
+        width: 50px;
+        height: 50px;
+    }
+ </style>
+ <script>
+    let index=0;
+    let tds=document.getElementsByTagName("td");
+
+    function init()
+    {
+        tds[index].style.backgroundColor="blue";
+    }
+
+    window.onkeydown=function(){down(event)}
+    
+    function down(e)
+    {
+        if(e.key=="w")
+        {
+            //index 0,1,2라면 위로 못올라감
+            if(index<3)
+            {
+                return;
+            }
+            tds[index].style.backgroundColor="white";
+            index-=3;
+            tds[index].style.backgroundColor="blue";
+
+        }
+        else if(e.key=="s")
+        {
+            //6,7,8
+            if(index>=6)
+            {
+                return;
+            }
+            tds[index].style.backgroundColor="white";
+            index+=3;
+            tds[index].style.backgroundColor="blue";
+        }
+        else if(e.key=="a")
+        {
+            if(index==0 || index==3||index==6)
+            {
+                return;
+            }
+            tds[index].style.backgroundColor="white";
+            index-=1;
+            tds[index].style.backgroundColor="blue";
+        }
+        else if(e.key=="d")
+        {
+            if(index==2 || index==5||index==8)
+            {
+                return;
+            }
+            tds[index].style.backgroundColor="white";
+            index+=1;
+            tds[index].style.backgroundColor="blue";
+        }
+        
+    }
+ </script>
+</head>
+<body onload="init()">
+    <table border="3px">
+        <tr><td></td>
+        <td></td>
+        <td></td></tr>
+        <tr><td></td>
+        <td></td>
+        <td></td></tr>
+        <tr><td></td>
+        <td></td>
+        <td></td></tr>
+    </table>
+    <form>
+        <p>w : 위  a:왼  d:오 s:아래  키 입력해주세요</p>
+    </form>
+ 
+</body>
+</html>
